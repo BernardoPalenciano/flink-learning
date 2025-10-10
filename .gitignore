@@ -1,0 +1,17 @@
+# Archivos de Flink/Java/Scala
+/target/
+*.jar
+*.class
+
+# Directorios de IDEs (IntelliJ, VS Code, etc.)
+.idea/
+.vscode/
+
+# Dependencias de Maven/Gradle
+/dependency-reduced-pom.xml
+/lib/
+/build/
+
+# Docker y Volumes
+# No rastreamos los volúmenes de datos que Docker crea
+pgdata/
