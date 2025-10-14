@@ -55,15 +55,18 @@ El script create_topic.py se ejecuta dentro del contenedor kafka-broker. Esto ga
 
 Comando de Ejecución (desde el directorio infra/):
 
-Bash
+```bash
 # El script está montado en la ruta /scripts dentro del contenedor
 docker exec kafka-broker python3 /scripts/create-topic.py
+```
+
 Verificación:
 El script esperará 20 segundos y si es exitoso, mostrará: ✅ Topic 'input-clicks' creado con éxito.
 
 B. Creación de la Tabla de PostgreSQL (aggregated_counts)
 La tabla de destino de Flink se crea automáticamente al inicio del servicio de la base de datos, mapeando el archivo create_table.sql en el docker-compose.yml. -> esto no he conseguido que funcione por lo que hay que crear la tabla manualmente
-Bash
+
+```bash
 # Entramos en el docker de postgres-db
  docker exec -it postgres-db psql -U user -d flinkdb
 # Ejecutamos el sql
@@ -72,3 +75,5 @@ CREATE TABLE IF NOT EXISTS aggregated_counts (
     count_value BIGINT,
     window_end_time TIMESTAMP
 );
+
+```
