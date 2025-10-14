@@ -45,6 +45,8 @@ cd infra
 # Esto crea una imagen de Kafka con Python y la librería 'kafka-python'.
 docker compose up -d --build
 
+```
+
 ### Paso 2: Configuración de Source y Sink (Creación de Topic y Tabla)
 Una vez que los contenedores estén operativos, usa la CLI de Docker para ejecutar los comandos dentro de los contenedores.
 
