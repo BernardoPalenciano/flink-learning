@@ -8,7 +8,9 @@ USER root
 # 1. Instalar Python 3 y pip usando APK
 RUN apk update && \
     apk add --no-cache openjdk17-jre python3 py3-pip && \
-    rm -rf /var/cache/apk/* # 2. Instalar la librería 'kafka-python'
+    rm -rf /var/cache/apk/* 
+
+# 2. Instalar la librería 'kafka-python'
 RUN pip3 install --break-system-packages kafka-python
 
 # (Opcional pero recomendable) Volvemos al usuario de seguridad si la imagen lo tiene definido, 
