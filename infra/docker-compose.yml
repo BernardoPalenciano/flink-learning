@@ -25,7 +25,7 @@ services:
       - ./scripts:/scripts 
 
   jobmanager:
-    image: apache/flink:scala_2.12-java21
+    image: apache/flink:1.20-java17
     container_name: flink-jobmanager
     hostname: flink-jobmanager
     ports:
@@ -35,7 +35,7 @@ services:
     command: jobmanager
 
   taskmanager:
-    image: apache/flink:scala_2.12-java21
+    image: apache/flink:1.20-java17
     container_name: flink-taskmanager
     hostname: flink-taskmanager
     depends_on:
