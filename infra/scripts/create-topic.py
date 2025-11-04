@@ -7,7 +7,7 @@ from kafka.errors import TopicAlreadyExistsError
 # NOTA: Debes usar 'kafka-broker:9092' ya que este script se ejecuta FUERA de Docker, 
 # pero la dirección es resuelta por Docker Compose a través de los puertos mapeados o la red de Docker.
 BOOTSTRAP_SERVER = 'localhost:9092' # O usa 'kafka-broker:9092' si ejecutas el script DENTRO de un contenedor de Python
-TOPIC_NAME = 'input-clicks'
+TOPIC_NAME = 'user_activity'
 PARTITIONS = 3
 REPLICATION_FACTOR = 1
 
