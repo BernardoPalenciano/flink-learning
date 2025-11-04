@@ -23,7 +23,7 @@ import java.time.Duration;
  * Job de Flink para calcular el total de clics por usuario dentro de una Ventana de Sesión.
  *
  * Configuración:
- * 1. Lee datos de Kafka (topic 'user_activity').
+ * 1. Lee datos de Kafka (topic 'input-clicks').
  * 2. Asigna Event Time y Watermarks.
  * 3. Aplica Ventanas de Sesión con un gap de inactividad de 5 segundos.
  * 4. Persiste el resultado (Usuario, Conteo, Inicio de Sesión) en PostgreSQL.
@@ -91,7 +91,7 @@ public class SessionWindowJob {
         // 1. Configuración del Kafka Source
         KafkaSource<UserActivityEvent> kafkaSource = KafkaSource.<UserActivityEvent>builder()
                 .setBootstrapServers("kafka-broker:9092") // Usamos el nombre del servicio Docker
-                .setTopics("user_activity")
+                .setTopics("input-clicks")
                 .setGroupId("flink-session-group")
                 .setStartingOffsets(org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsInitializer.earliest())
                 // Deserializador: Pasamos la instancia de la clase, ya que implementa KafkaRecordDeserializationSchema
