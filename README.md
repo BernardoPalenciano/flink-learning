@@ -67,7 +67,7 @@ A continuación, subimos y ejecutamos el JAR
 ### Paso 3: Configuración de Source y Sink (Creación de Topic y Tabla)
 Una vez que los contenedores estén operativos, usa la CLI de Docker para ejecutar los comandos dentro de los contenedores.
 
-A. Crear el Topic de Kafka (input-clicks)
+A. Crear el Topic de Kafka (user_activity)
 El script create_topic.py se ejecuta dentro del contenedor kafka-broker. Esto garantiza que la conexión use el nombre interno (kafka-broker:9092) de manera fiable.
 
 Comando de Ejecución (desde el directorio infra/):
@@ -78,7 +78,7 @@ docker exec kafka-broker python3 /scripts/create-topic.py
 ```
 
 Verificación:
-El script esperará 20 segundos y si es exitoso, mostrará: ✅ Topic 'input-clicks' creado con éxito.
+El script esperará 20 segundos y si es exitoso, mostrará: ✅ Topic 'user_activity' creado con éxito.
 
 B. Creación de la Tabla de PostgreSQL (aggregated_counts)
 La tabla de destino de Flink se crea automáticamente al inicio del servicio de la base de datos, mapeando el archivo create_table.sql en el docker-compose.yml. -> esto no he conseguido que funcione por lo que hay que crear la tabla manualmente
