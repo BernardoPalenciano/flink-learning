@@ -104,7 +104,8 @@ public class SessionWindowJob {
                         // WatermarkStrategy para Event Time. Tolera 5 segundos de latencia (opcional, pero buena práctica).
                         .<UserActivityEvent>forBoundedOutOfOrderness(Duration.ofSeconds(5))
                         .withTimestampAssigner((SerializableTimestampAssigner<UserActivityEvent>)
-                                (event, recordTimestamp) -> event.timestamp), // Asignamos el timestamp del evento
+                                (event, recordTimestamp) -> event.timestamp)
+                        .withIdleness(Duration.ofSeconds(10)), // Timeout para particiones inactivas (opcional)
                 "Kafka Source");
 
 
