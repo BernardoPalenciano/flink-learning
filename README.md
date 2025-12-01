@@ -87,10 +87,12 @@ La tabla de destino de Flink se crea automáticamente al inicio del servicio de 
 # Entramos en el docker de postgres-db
  docker exec -it postgres-db psql -U user -d flinkdb
 # Ejecutamos el sql
-CREATE TABLE IF NOT EXISTS aggregated_counts (
-    group_key VARCHAR(255) PRIMARY KEY, 
-    count_value BIGINT,
-    window_end_time TIMESTAMP
+CREATE TABLE IF NOT EXISTS session_results (
+    user_id VARCHAR(255) NOT NULL,
+    total_clicks BIGINT,
+    session_start_time TIMESTAMP WITH TIME ZONE NOT NULL,
+    -- CLAVE PRIMARIA COMPUESTA: Es única por usuario Y por hora de inicio de sesión
+    PRIMARY KEY (user_id, session_start_time) 
 );
 
 ```
